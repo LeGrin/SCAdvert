@@ -1,0 +1,400 @@
+﻿ <Window x:Class="SCAdvert.HomeForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        
+        xmlns:scAdvert="clr-namespace:SCAdvert"
+        xmlns:filter="clr-namespace:SCAdvert.Classes" xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+
+         Name="FormHome"
+        Title="SCAdvert"
+        MinHeight="566.5" MinWidth="868" Height="566.5" Width="868"
+        WindowStartupLocation="CenterScreen"
+        Loaded="FormHome_Loaded"
+        WindowState="Maximized">
+    
+    <Window.Resources>
+        <!--<CollectionViewSource x:Key="ContactsView"  Source="{Binding ContactsCollection }" Filter="Filter" >
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="Contact_grname" />
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>-->
+    </Window.Resources>
+    <Grid>
+        <Button Name="BtnEnter" 
+                Content="Вход" Margin="0,10,20,0"
+                VerticalAlignment="Top"
+                Click="BtnEnter_Click"
+                Foreground="White"
+                Background="#FF16ADE6"
+                HorizontalAlignment="Right"
+                Width="75"/>
+
+        <DataGrid  Name="DataGridSql" Margin="10, 50,20,51" 
+                  AutoGenerateColumns="False" 
+                  CanUserResizeColumns="False"
+                  HorizontalScrollBarVisibility="Auto"
+                  CanUserAddRows="False"
+                  Background="White" RowBackground="White"
+                  AlternatingRowBackground="LightCyan"
+                  LoadingRow="MyGrid_LoadingRow">
+
+                <DataGrid.Columns>
+
+                <DataGridTextColumn/>
+
+
+                <!--MediaType-->
+                <DataGridTextColumn Binding="{Binding MediaTypeName}">
+                    <DataGridTextColumn.Header>
+                        <Grid x:Name="GridMediaType">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <AccessText Grid.Column="0" 
+                                        Width="100" 
+                                        Text="MediaType" 
+                                        TextAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Grid.Column="1"
+                                        x:Name="CboMediaType" 
+                                        Background="WhiteSmoke"
+                                        SelectionChanged="CboMediaType_SelectionChanged">
+                            </ComboBox>
+                        </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+   
+                <!--Year-->
+                <DataGridTextColumn Binding="{Binding Column1}">
+                <DataGridTextColumn.Header>
+                    <Grid x:Name="GridYear">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0" 
+                                        Width="50" 
+                                        Text="Year" 
+                                        TextAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+
+                        <ComboBox Grid.Column="1"
+                                        x:Name="CboYear" 
+                                        Background="WhiteSmoke"
+                                        SelectionChanged="CboYear_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--Month-->
+                <DataGridTextColumn Binding="{Binding Month}">
+                    <DataGridTextColumn.Header>
+                        <Grid>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <AccessText Grid.Column="0"
+                                        Width="50" 
+                                        Text="Month" 
+                                        TextAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Grid.Column="1"
+                                      Name="CboMonth"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboMonth_SelectionChanged">
+                            </ComboBox>
+                        </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--SectorName-->
+                <DataGridTextColumn Binding="{Binding SectorName}">
+                    <DataGridTextColumn.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <AccessText Grid.Column="0" 
+                                        Width="100"
+                                        Text="SectorName" 
+                                        TextAlignment="Center" 
+                                        VerticalAlignment="Center" HorizontalAlignment="Left"
+                                        Margin="0,3" Height="16"/>
+
+                            <ComboBox Grid.Column="1"
+                                      Name="CboSector"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboSector_SelectionChanged"
+                                      HorizontalAlignment="Left"/>
+                        </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--CategoryName-->
+                <DataGridTextColumn Binding="{Binding CategoryName}" >
+                    <DataGridTextColumn.Header >
+                        <Grid>
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <AccessText Grid.Column="0" Width="100"
+                                        Text="CategoryName" 
+                                        TextAlignment="Center" 
+                                        VerticalAlignment="Center" HorizontalAlignment="Left" Margin="0,3"/>
+
+                            <AccessText/>
+                            
+                            <ComboBox Name="CboCategory"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboCategory_SelectionChanged"/>
+                        </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--ClassName-->
+                <DataGridTextColumn Binding="{Binding ClassName}">
+                    <DataGridTextColumn.Header>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+
+                            <AccessText Grid.Column="0" 
+                                        Width="100" 
+                                        Text="ClassName" 
+                                        TextAlignment="Center" 
+                                        VerticalAlignment="Center"/>
+ 
+                            <ComboBox Name="CboClass"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboClass_SelectionChanged">
+                            </ComboBox>
+                        </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--Producer-->
+                <DataGridTextColumn Binding="{Binding Producer}">
+                <DataGridTextColumn.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="Producer"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                        <ComboBox Name="CboProducer"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboProducer_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                    </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--Brand-->
+                <DataGridTextColumn Binding="{Binding Brand}">
+                <DataGridTextColumn.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="Brand"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Name="CboBrand"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboBrand_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--Product-->
+                <DataGridTextColumn Binding="{Binding Product}">
+                <DataGridTextColumn.Header>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="Product"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                        <ComboBox Name="CboProduct"
+                                Grid.Column="1"
+                                Background="WhiteSmoke"
+                                SelectionChanged="CboProduct_SelectionChanged">
+                    </ComboBox>
+                </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--Market-->
+                <DataGridTextColumn Binding="{Binding Market}">
+                <DataGridTextColumn.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="Market"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Width="20" Name="CboMarket"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboMarket_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--Distributor-->
+                <DataGridTextColumn Binding="{Binding Distributor}">
+                <DataGridTextColumn.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="Distributor"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Name="CboDistributor"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboDistributor_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--AdType-->
+                <DataGridTextColumn Binding="{Binding AdType}">
+                <DataGridTextColumn.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="AdType"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Name="CboAdType"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboAdType_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+                <!--AdFormat-->
+                <DataGridTextColumn Binding="{Binding AdFormat}">
+                <DataGridTextColumn.Header>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <AccessText Grid.Column="0"
+                                        Width="100"
+                                        Text="AdFormat"
+                                        TextAlignment="Center"
+                                        VerticalAlignment="Center"/>
+
+                            <ComboBox Name="CboAdFormat"
+                                      Grid.Column="1"
+                                      Background="WhiteSmoke"
+                                      SelectionChanged="CboAdFormat_SelectionChanged">
+                        </ComboBox>
+                    </Grid>
+                </DataGridTextColumn.Header>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        
+        <Button Name="ExportToExcel" 
+                Content="Экспортировать в EXCEL" Margin="0,0,20,16" 
+                Background="#FF16ADE6" Foreground="White" Height="22"
+                VerticalAlignment="Bottom" HorizontalAlignment="Right"
+                Width="166" Click="ExportToExcel_Click"/>
+
+        <Button Name="btnFirst" Content="&lt;&lt;" HorizontalAlignment="Left" 
+                Margin="10,0,0,16" Width="45" Height="22" VerticalAlignment="Bottom" 
+                Click="btnFirst_Click" Background="#FF16ADE6" Foreground="White"/>
+        
+        <Button Name="btnPrevious" Content="&lt;" HorizontalAlignment="Left"
+                Margin="60,0,0,16" VerticalAlignment="Bottom" Width="75" Height="22"
+                Click="btnPrevious_Click" Background="#FF16ADE6" Foreground="White"/>
+        
+        <Button Name="btnNext" Content="&gt;" HorizontalAlignment="Left" 
+                Margin="335,0,0,16" VerticalAlignment="Bottom" Width="75" Height="22"
+                Click="btnNext_Click" Background="#FF16ADE6" Foreground="White"/>
+        
+        <Button Name="btnLast" Content="&gt;&gt;" HorizontalAlignment="Left" 
+                Margin="415,0,0,16" VerticalAlignment="Bottom" Width="45" Height="22"
+                Click="btnLast_Click" Background="#FF16ADE6" Foreground="White"/>
+        
+        <TextBox Name="txtPaging" HorizontalAlignment="Left" Height="23" IsEnabled="False"
+                 TextAlignment="Center"
+                 Margin="140,0,0,15" TextWrapping="Wrap" Text=""
+                 VerticalAlignment="Bottom" Width="190"/>
+        
+        <Button Name="btnClearFilter" Content="Сбросить фильтры"
+                HorizontalAlignment="Left"
+                Margin="10,10,0,0" 
+                VerticalAlignment="Top" Width="125" Height="22"
+                Background="#FF16ADE6"
+                Foreground="White" Click="btnClearFilter_Click"/>
+  
+    </Grid>
+</Window>

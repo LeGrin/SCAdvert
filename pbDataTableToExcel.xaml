@@ -1,0 +1,9 @@
+﻿<Window x:Class="SCAdvert.pbDataTableToExcel"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Загружаем Excel файл..." Height="104" Width="473" WindowStartupLocation="CenterScreen" Topmost="True" MinWidth="473" MinHeight="104" MaxWidth="473" MaxHeight="104">
+    <Grid>
+        <ProgressBar Name="PbDtToExcel" HorizontalAlignment="Left" Height="47" Margin="10,10,0,0" VerticalAlignment="Top" Width="436"/>
+
+    </Grid>
+</Window>

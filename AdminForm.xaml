@@ -1,0 +1,51 @@
+﻿<Window x:Class="SCAdvert.AdminForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Name="AdministratorForm" Title="Администрирование" Height="327.191" Width="585.239" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Loaded="AdministratorForm_Loaded">
+    <Grid>
+        <Label Content="Администрирование" HorizontalAlignment="Left" Margin="10,2,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <GroupBox Header="Импорт файлов" HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Height="233" Width="323"/>
+
+
+        <GroupBox Header="Управление пользователями" HorizontalAlignment="Left" Margin="338,49,0,0" VerticalAlignment="Top" Height="152" Width="224">
+            
+            <Label Content="Имя:" HorizontalAlignment="Left"  VerticalAlignment="Top"/>
+           
+        </GroupBox>
+        
+        <Button Name="BtnAddToSQL" Content=" + Загрузить" HorizontalAlignment="Left" Margin="338,260,0,0" VerticalAlignment="Top" Width="224" Foreground="White" Background="#FF16ADE6" Click="BtnAddToSQL_Click"/>
+        <Button Name="BtnAddToGroupImport"  Content=" + Добавить файл" HorizontalAlignment="Left" Margin="338,233,0,0" VerticalAlignment="Top" Width="224" Foreground="White" Background="#FF16ADE6" Click="BtnAddToGroupImport_Click"/>
+        <Button Name="AddUser" Content="+ Добавить пользователя" HorizontalAlignment="Left" Margin="338,206,0,0" VerticalAlignment="Top" Width="224" Background="#FF16ADE6" Foreground="White"/>
+
+        <Label Content="Пароль:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="343,124,0,0"/>
+
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="348,91,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="348,150,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="203"/>
+        
+        
+        <ProgressBar Name="ProgressBar1" HorizontalAlignment="Left" Height="22" Margin="24,91,0,0" VerticalAlignment="Top" Width="290" Foreground="#FF00B9FF"/>
+        <ProgressBar Name="ProgressBar2" HorizontalAlignment="Left" Height="22" Margin="24,144,0,0" VerticalAlignment="Top" Width="290" Foreground="#FF00B9FF"/>
+        <ProgressBar Name="ProgressBar3" HorizontalAlignment="Left" Height="20" Margin="24,197,0,0" VerticalAlignment="Top" Width="290" Foreground="#FF00B9FF"/>
+        <ProgressBar Name="ProgressBar4" HorizontalAlignment="Left" Height="22" Margin="24,248,0,0" VerticalAlignment="Top" Width="290" Foreground="#FF00B9FF"/>
+
+        <Label Name="LabelNameFile1" Content="Имя файла" HorizontalAlignment="Left" Margin="24,65,0,0" VerticalAlignment="Top"/>
+        <Label Name="LabelNameFile2" Content="Имя файла" HorizontalAlignment="Left" Margin="24,118,0,0" VerticalAlignment="Top"/>
+        <Label Name="LabelNameFile3" Content="Имя файла" HorizontalAlignment="Left" Margin="24,171,0,0" VerticalAlignment="Top"/>
+        <Label Name="LabelNameFile4" Content="Имя файла" HorizontalAlignment="Left" Margin="24,222,0,0" VerticalAlignment="Top"/>
+
+        <Label Name="FileSize1" Content="MB" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="262,65,0,0" VerticalAlignment="Top"/>
+        <Label Name="FileSize2" Content="MB" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="262,119,0,0" VerticalAlignment="Top"/>
+        <Label Name="FileSize3" Content="MB" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="262,171,0,0" VerticalAlignment="Top"/>
+        <Label Name="FileSize4" Content="MB" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="262,221,0,0" VerticalAlignment="Top"/>
+        
+        <Button Name="BtnCancel" Content="Выход" HorizontalAlignment="Left" Margin="487,10,0,0" VerticalAlignment="Top" Width="75" Background="#FF16ADE6" Foreground="White" Click="BtnCancel_Click"/>
+        <TextBox Name="TxtPathName" HorizontalAlignment="Left" Height="23" Margin="209,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="253"/>
+        <Label Name="FileNotAccept"  Content="Файл не выбран" HorizontalAlignment="Left" Margin="120,163,0,0" VerticalAlignment="Top"/>
+
+        <Label Name="LabelCurrentRow" Content="CurrentRow" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="108,88,0,0" VerticalAlignment="Top" Foreground="#FF0D6E93"/>
+        <Label Name="LableSlash" Content="/" HorizontalAlignment="Left" Margin="174,88,0,0" VerticalAlignment="Top" Foreground="#FF0D6E93"/>
+        <Label Name="LabelTotalRows" Content="TotalRows" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Margin="182,88,0,0" VerticalAlignment="Top" Foreground="#FF0D6E93"/>
+
+
+    </Grid>
+</Window>

@@ -77,15 +77,19 @@ namespace SCAdvert
             _logForm = new LoginForm();
             _logForm.Show();
         }
+        public class DataItem
+        {
+            public string Column1 { get; set; }
+            public string Column2 { get; set; }
+            public string Column3 { get; set; }
+            public string Column4 { get; set; }
+        }
 
         private void FormHome_Loaded(object sender, RoutedEventArgs e)
         {
+
             btnPrevious.IsEnabled = false;
             btnFirst.IsEnabled = false;
-
-
-
-
 
             ComboBoxMediaType();
             ComboBoxYear();
@@ -110,7 +114,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT MediaTypeID, MediaTypeName FROM dbo.MediaType"; ;
+            const string queryString = @"SELECT DISTINCT MediaTypeID, MediaTypeName FROM dbo.MediaType ORDER BY MediaTypeName"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -171,7 +175,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT SectorID, SectorName FROM dbo.Sector"; ;
+            const string queryString = @"SELECT DISTINCT SectorID, SectorName FROM dbo.Sector ORDER BY SectorName"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -191,7 +195,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT CategoryID, CategoryName FROM dbo.Category"; ;
+            const string queryString = @"SELECT DISTINCT CategoryID, CategoryName FROM dbo.Category ORDER BY CategoryName"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -211,7 +215,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT ClassID, ClassName FROM dbo.Class"; ;
+            const string queryString = @"SELECT DISTINCT ClassID, ClassName FROM dbo.Class ORDER BY ClassName"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -231,7 +235,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT  DISTINCT FillterReferenceID, Producer FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT  DISTINCT FillterReferenceID, Producer FROM dbo.OrderDetail ORDER BY Producer"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -251,7 +255,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT FillterReferenceID, Brand FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT DISTINCT FillterReferenceID, Brand FROM dbo.OrderDetail ORDER BY Brand"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -271,7 +275,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT FillterReferenceID, Product FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT DISTINCT FillterReferenceID, Product FROM dbo.OrderDetail ORDER BY Product"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -291,7 +295,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT FillterReferenceID, Market FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT DISTINCT FillterReferenceID, Market FROM dbo.OrderDetail ORDER BY Market"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -311,7 +315,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT FillterReferenceID, Distributor FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT DISTINCT FillterReferenceID, Distributor FROM dbo.OrderDetail ORDER BY Distributor"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -331,7 +335,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT FillterReferenceID, AdType FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT DISTINCT FillterReferenceID, AdType FROM dbo.OrderDetail ORDER BY AdType"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -351,7 +355,7 @@ namespace SCAdvert
         {
             dt = new System.Data.DataTable();
 
-            const string queryString = @"SELECT DISTINCT FillterReferenceID, AdFormat FROM dbo.OrderDetail"; ;
+            const string queryString = @"SELECT DISTINCT FillterReferenceID, AdFormat FROM dbo.OrderDetail ORDER BY AdFormat"; ;
 
             var con = new SqlConnection(_connect);
 
@@ -596,9 +600,9 @@ namespace SCAdvert
 
         public class ColumnDataTable
         {
-            public string mediaType { get; set; }
-            public string year { get; set; }
-            public string month { get; set; }
+            public string MediaType { get; set; }
+            public string Year { get; set; }
+            public string Month { get; set; }
             public string SectorName { get; set; }
         }
         public List<ColumnDataTable> GetDataTableList()
@@ -608,17 +612,13 @@ namespace SCAdvert
             {
                 System.Data.DataTable dt = BindTable();
 
-                foreach (DataRow datarow in dt.Rows)
-                {
-                    var ColumnValue = new ColumnDataTable
+                nameColumn.AddRange(from DataRow datarow in dt.Rows select new ColumnDataTable
                     {
-                        mediaType = datarow["MediaTypeName"].ToString(),
-                        year = datarow["Column1"].ToString(),
-                        month = datarow["Month"].ToString(),
+                        MediaType = datarow["MediaTypeName"].ToString(),
+                        Year = datarow["Column1"].ToString(),
+                        Month = datarow["Month"].ToString(),
                         SectorName = datarow["SectorName"].ToString()
-                    };
-                    nameColumn.Add(ColumnValue);
-                }
+                    });
             }
             catch (Exception ex)
             {
